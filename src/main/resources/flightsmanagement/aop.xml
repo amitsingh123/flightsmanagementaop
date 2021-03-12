@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans.xsd
+    http://www.springframework.org/schema/aop
+    http://www.springframework.org/schema/aop/spring-aop-3.0.xsd">
+    <aop:aspectj-autoproxy/>
+    <bean id="jhon" class="com.amit.springaop.flightmanagement.domain.Passenger">
+        <property name="name" value="Jhon"/>
+        <property name="country" value="USA"/>
+    </bean>
+    <bean id="alex" class="com.amit.springaop.flightmanagement.domain.Passenger">
+        <property name="name" value="Alex"/>
+        <property name="country" value="UK"/>
+    </bean>
+    <bean id="ram" class="com.amit.springaop.flightmanagement.domain.Passenger">
+        <property name="name" value="Ram"/>
+        <property name="country" value="India"/>
+    </bean>
+    <bean id="flight" class="com.amit.springaop.flightmanagement.domain.Flight">
+        <property name="id" value="AIR100412"/>
+        <property name="company" value="Air India"/>
+        <property name="passengers">
+            <list>
+                <ref bean="jhon"/>
+                <ref bean="alex"/>
+                <ref bean="ram"/>
+            </list>
+        </property>
+    </bean>
+    <bean id="ticket" class="com.amit.springaop.flightmanagement.domain.Ticket">
+        <property name="number" value="4455901"/>
+        <property name="passenger" ref="alex"/>
+    </bean>
+    <bean id="loggingAspect1" class="com.amit.springaop.flightmanagement.aspects.LoggingAspect1"/>
+    <bean id="loggingAspect2" class="com.amit.springaop.flightmanagement.aspects.LoggingAspect2"/>
+</beans>
