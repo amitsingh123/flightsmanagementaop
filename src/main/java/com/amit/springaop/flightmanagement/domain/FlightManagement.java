@@ -19,6 +19,7 @@ public class FlightManagement {
 
         Ticket ticket = (Ticket)context.getBean("ticket");
         ticket.setNumber(995566120);
+        System.out.println("ticket number.."+ticket.getNumber());
 
         context.close();
     }
