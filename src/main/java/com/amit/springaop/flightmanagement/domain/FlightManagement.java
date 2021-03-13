@@ -1,5 +1,6 @@
 package com.amit.springaop.flightmanagement.domain;
 
+import com.amit.springaop.flightmanagement.dao.PassengerDao;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 public class FlightManagement {
@@ -20,6 +21,17 @@ public class FlightManagement {
         Ticket ticket = (Ticket)context.getBean("ticket");
         ticket.setNumber(995566120);
         System.out.println("ticket number.."+ticket.getNumber());
+
+        PassengerDao passengerDao = (PassengerDao) context.getBean("passengerDaoImpl");
+        passengerDao.getPassenger(1);
+
+        passengerDao.getPassenger(1);
+
+        Passenger passenger = new Passenger();
+        passenger.setName("Mike");
+        passenger.setCountry("RR");
+
+        passengerDao.add(passenger);
 
         context.close();
     }
